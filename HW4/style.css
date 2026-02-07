@@ -1,0 +1,13 @@
+body {
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: thistle;
+    text-align: center;
+    font-size: larger;
+}
+
+img {
+
+margin-top: 100px;
+max-width: 500px;
+}
