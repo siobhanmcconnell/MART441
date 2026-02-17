@@ -1,0 +1,318 @@
+<html>
+
+<head>
+    <title>Choose your own adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+         function getChoice1()
+        {
+            var myChoice = document.getElementById("choice").value;
+            var myQuestion = document.getElementById("question");
+            if(myChoice === "yes")
+            {
+                document.getElementById("choice").style.display="none";
+                document.getElementById("btnSubmit").style.display="none";
+                
+                document.getElementById("choice2").style.display="block";
+                document.getElementById("btnSubmit2").style.display="block";
+                
+                document.getElementById("mainImage").src = "Image/map.avif"
+                myQuestion.innerHTML = "Great. Where should we head to, Sacramento or The Dalles?";
+                document.body.style.backgroundColor = "cornsilk";
+                
+                
+
+            }
+            else if(myChoice === "no")
+            {
+                document.getElementById("choice").style.display="none";
+                document.getElementById("btnSubmit").style.display="none";
+                
+                document.getElementById("btnSubmitRestart").style.display="block";
+                myQuestion.innerHTML = "That's ok. Maybe life isn't so bad here after all.";
+
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        
+        }
+        function getChoice2()
+        {
+            var answer = document.getElementById("choice2").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "Sacramento")
+            {
+
+                document.getElementById("choice2").style.display="none";
+                document.getElementById("btnSubmit2").style.display="none";
+                
+                document.getElementById("choice3").style.display="block";
+                document.getElementById("btnSubmit3").style.display="block";
+                document.getElementById("mainImage").src = "Image/wagon.avif"
+                document.body.style.backgroundColor = "lavenderblush";
+                myQuestion.innerHTML = "Lovely. You pack lightly and there's exactly enough room for a stove. Should we bring one?";
+            }
+            else if(answer === "The Dalles")
+            {
+                document.getElementById("choice2").style.display="none";
+                document.getElementById("btnSubmit2").style.display="none";
+                
+                document.getElementById("choice3").style.display="block";
+                document.getElementById("btnSubmit3").style.display="block";
+                document.getElementById("mainImage").src = "Image/wagon.avif"
+                document.body.style.backgroundColor = "lightcyan";
+                myQuestion.innerHTML = "Great choice! You pack lightly and there's exactly enough room for a stove. Should we bring one?";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        }
+
+        function getChoice3()
+        {
+            var answer = document.getElementById("choice3").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "yes")
+            {   document.getElementById("choice3").style.display="none";
+                document.getElementById("btnSubmit3").style.display="none";
+                
+                document.getElementById("choice4").style.display="block";
+                document.getElementById("btnSubmit4").style.display="block";
+                document.getElementById("mainImage").src = "Image/calendar.avif"
+                document.body.style.backgroundColor = "peachpuff";
+                myQuestion.innerHTML = "That will come in handy for sure. Here's the last question before we set out. Timing is important. Should we leave in May or June?";
+            }
+            else if(answer === "no")
+            {
+                 document.getElementById("choice3").style.display="none";
+                document.getElementById("btnSubmit3").style.display="none";
+                
+                document.getElementById("choice4").style.display="block";
+                document.getElementById("btnSubmit4").style.display="block";
+                document.getElementById("mainImage").src = "Image/calendar.avif"
+                document.body.style.backgroundColor = "mistyrose";
+                myQuestion.innerHTML = "Pack light, good thinking. Here's the last question before we set out. Timing is important. Should we leave in May or June? .";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        }
+
+         function getChoice4()
+        {
+            var answer = document.getElementById("choice4").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "May")
+            {
+                document.getElementById("choice4").style.display="none";
+                document.getElementById("btnSubmit4").style.display="none";
+                
+                document.getElementById("choice5").style.display="block";
+                document.getElementById("btnSubmit5").style.display="block";
+                document.getElementById("mainImage").src = "Image/town.avif"
+                document.body.style.backgroundColor = "darkseagreen";
+                myQuestion.innerHTML = "Nice, not too early, not too late. You set off without any problems. Weeks later, you approach a trading post at the halfway point. There's no turning back after this. Will you continue?";
+            }
+            else if(answer === "June")
+            {
+                document.getElementById("choice4").style.display="none";
+                document.getElementById("btnSubmit4").style.display="none";
+                
+                document.getElementById("choice5").style.display="block";
+                document.getElementById("btnSubmit5").style.display="block";
+                document.getElementById("mainImage").src = "Image/town.avif"
+                document.body.style.backgroundColor = "blanchedalmond";
+                myQuestion.innerHTML = "June it is. You set off without any problems. Weeks later, you approach a trading post at the halfway point. There's no turning back after this. Will you continue?";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        }
+        function getChoice5()
+        {
+            var answer = document.getElementById("choice5").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "yes")
+            {
+
+                document.getElementById("choice5").style.display="none";
+                document.getElementById("btnSubmit5").style.display="none";
+                
+                document.getElementById("choice6").style.display="block";
+                document.getElementById("btnSubmit6").style.display="block";
+                document.getElementById("mainImage").src = "Image/watch.avif"
+                document.body.style.backgroundColor = "honeydew";
+                myQuestion.innerHTML = "You approach a river deepened by the recent rain. Should we ford now or wait for conditions to improve?";
+            }
+            else if(answer === "no")
+            {
+                document.getElementById("choice5").style.display="none";
+                document.getElementById("btnSubmit5").style.display="none";
+                
+                document.getElementById("btnSubmitRestart").style.display="block";
+                myQuestion.innerHTML = "You and your party have second thoughts. The trail will still be there when you're ready. You turn around and head home.";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        }
+       
+ function getChoice6()
+        {
+            var answer = document.getElementById("choice6").value;
+            var myQuestion = document.getElementById("question");
+            if(answer === "ford now")
+            {   document.getElementById("choice6").style.display="none";
+                document.getElementById("btnSubmit6").style.display="none";
+                
+                document.getElementById("choice7").style.display="block";
+                document.getElementById("btnSubmit7").style.display="block";
+                document.getElementById("mainImage").src = "Image/end.avif"
+                document.body.style.backgroundColor = "lavender";
+                myQuestion.innerHTML = "Congratulations! You made it to your new home. Enter your name.";
+            }
+        
+            else if(answer === "wait")
+            {
+                document.getElementById("choice6").style.display="none";
+                document.getElementById("btnSubmit6").style.display="none";
+                
+                document.getElementById("choice7b").style.display="block";
+                document.getElementById("btnSubmit7b").style.display="block";
+                document.body.style.backgroundColor = "lightblue";
+                myQuestion.innerHTML = "The conditions worsen. Should we take our chances and ford now, or wait longer?";
+            }
+            else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+        }
+
+        function getChoice7()
+        {
+            var answer = document.getElementById("choice7").value;
+            var myQuestion = document.getElementById("question");
+         if(answer!="")
+         {
+            document.getElementById("choice7").style.display="none"
+            document.getElementById("btnSubmit7").style.display="none";
+            document.getElementById("question").textContent="";
+            document.body.style.backgroundColor = "pink";
+           // console.log(answer);
+           for (var i = 0; i < 5; i++) {
+            myQuestion.innerHTML += "Well done " + (answer) + ". You're one heck of a cowpoke." + "<br>"; 
+           }
+           
+ 
+        }
+        }
+        
+
+         function getChoice7b(luck){
+            var answer = document.getElementById("choice7b").value;
+            var myQuestion = document.getElementById("question");
+            var luck = Math.floor(Math.random()*10);
+        if(answer === "ford now" && luck >= 5)
+        {
+                console.log(luck);
+                document.getElementById("choice7b").style.display="none";
+                document.getElementById("btnSubmit7b").style.display="none";
+            
+                document.getElementById("choice7").style.display="block";
+                document.getElementById("btnSubmit7").style.display="block";
+                document.getElementById("mainImage").src = "Image/end.avif"
+                document.body.style.backgroundColor = "plum";
+                myQuestion.innerHTML = "Congratulations! You made it to your new home. Enter your name.";
+        }
+
+        else if(answer === "ford now" && luck <=4)
+        {
+                console.log(luck);
+                document.getElementById("choice7b").style.display="none";
+                document.getElementById("btnSubmit7b").style.display="none";
+                
+                document.getElementById("btnSubmitRestart").style.display="block";
+                myQuestion.innerHTML = "The river is too dangerous and you lose many supplies. Please start over.";
+
+        }
+
+        else if (answer === "wait")
+        {
+            document.getElementById("choice7b").style.display="none";
+            document.getElementById("btnSubmit7b").style.display="none";
+
+            document.getElementById("btnSubmitRestart").style.display="block";
+            myQuestion.innerHTML = "A storm moves in and conditions are at their worst. You can no longer ford and you won't arrive before winter if you wait any longer. Please Restart."
+        }
+        else
+            {
+                myQuestion.innerHTML = "Invalid answer. Please check spelling/capitalization";
+            }
+
+         }
+        
+         function startOver()
+         {
+             var myChoice = document.getElementById("choice").value;
+            var myQuestion = document.getElementById("question");
+       document.getElementById("choice").style.display="block";
+       document.getElementById("btnSubmit").style.display="block";
+        document.getElementById("btnSubmitRestart").style.display="none";
+        
+       document.getElementById("choice2").style.display="none";
+        document.getElementById("choice3").style.display="none";
+        document.getElementById("choice4").style.display="none";
+        document.getElementById("choice5").style.display="none";
+         document.getElementById("choice6").style.display="none";
+
+         document.body.style.backgroundColor = "thistle";
+         
+         myQuestion.innerHTML =  "It's 1854. You and your family have decided to make the trek out west in search of a better life. <br> <br> The journey will be treacherous, but it may just be the new start you need. Will you continue?";
+
+         }
+    </script>
+</head>
+<body>
+    <br>
+    <h1>Oregon Trail</h1>
+    <div id="question">
+        It's 1854. You and your family have decided to make the trek out west in search of a better life. <br> <br> The journey will be treacherous, but it may just be the new start you need. Will you continue?
+    </div>
+    <br>
+<input type="text" size="30" id="choice" value="Please enter yes or no">
+        <button id="btnSubmit" onclick="getChoice1();">Click to continue</button>
+
+        <input type="text" size="30" id="choice2" value="Enter Sacramento or The Dalles ." style="display:none">
+        <button id="btnSubmit2" onclick="getChoice2();"  style="display:none">Click to continue</button>
+
+        <input type="text" size="30" id="choice3" value="Enter yes or no."  style="display:none">
+        <button id="btnSubmit3" onclick="getChoice3();" style="display:none">Click to continue</button>
+
+        <input type="text" size="30" id="choice4" value="Enter May or June."  style="display:none">
+        <button id="btnSubmit4" onclick="getChoice4();" style="display:none">Click to continue</button>
+
+        <input type="text" size="30" id="choice5" value="Enter yes or no."  style="display:none">
+        <button id="btnSubmit5" onclick="getChoice5();" style="display:none">Click to continue</button>
+
+        <input type="text" size="30" id="choice6" value="Enter ford now or wait."  style="display:none">
+        <button id="btnSubmit6" onclick="getChoice6();" style="display:none">Click to continue</button>
+
+        <input type="text" size="30" id="choice7" value="Enter name."  style="display:none">
+        <button id="btnSubmit7" onclick="getChoice7();" style="display:none">Click to continue</button>
+
+         <input type="text" size="30" id="choice7b" value="Enter ford now or wait."  style="display:none">
+        <button id="btnSubmit7b" onclick="getChoice7b();" style="display:none">Click to continue</button>
+
+        <button id="btnSubmitRestart" onclick="startOver();" style="display:none">Restart</button>
+
+
+
+        <img src="image/bison.avif" id="mainImage">
+    </body>
+</html>
