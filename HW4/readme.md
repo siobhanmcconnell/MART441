@@ -1,0 +1,4 @@
+AI thoughts:
+The AI used roughly the same logic in the code itself, it was just used one file instead of several that were linked together. One thing it did differently was instead of three progressions, it did one progression that had three choices to start with. The extra choice was nice, but obviously it was really short with one progression. It also had quite a bit more styling than I used, which I found interesting since I omitted that part from the prompt.
+
+Successes and Challenges: My biggest challenge was knowing where to start. I understand the content of the lecuture videos well, but I don't always know how to translate that info to the actual assignment. I had to use the example as a basis quite a bit, but by experimenting with it, I think I figured out everything I needed. Making the story was a lot of fun when I figured out where things needed to go, too.  
