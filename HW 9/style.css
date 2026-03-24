@@ -1,0 +1,45 @@
+
+.shape {
+  position: absolute;
+}
+.square {
+      width: 50px;
+      height: 50px;
+      background: red;
+
+    }
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+  border-radius: 50%;
+
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 50px solid blue;
+
+}
+
+
+    body{
+        background-color: peachpuff;
+    }
+
+    img{
+        height: 500px;
+        width: auto;
+    }
+
+    #image-container{
+      position: absolute;
+    }
+
+    #quotation-container{
+      position: absolute;
+    }
