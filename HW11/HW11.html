@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery AJAX JSON Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial; }
+        
+    </style>
+</head>
+<body>
+
+<h2>World Languages</h2>
+
+<button id="btnsubmit">Show Data</button>
+<table id="output">
+
+
+<script>
+
+ $(document).ready(function() {
+$("button").click(function(){
+
+
+    $.fn.plugin = function() {
+  this.css("background-color", "floralwhite");
+  this.css("color", "darkolivegreen");
+  this.css("font-family", "Times New Roman");
+  this.css("font-size", "18pt");
+  this.css("margin", "auto");
+  this.css("border", "solid 5px darkkhaki");
+
+};
+
+
+  $.getJSON('world_languages_integrated.json', function(data) {
+    let output = '';
+
+    $.each(data, function(i, language) {
+        output += `<tr><td><strong> Language Name: </strong>${language.name} </td>
+                <td><strong>Area: </strong>${language.glottolog.macroarea} </td>
+                <td><strong>Latitude: </strong>${language.glottolog.latitude} </td>
+                <td><strong>Longitude: </strong>${language.glottolog.longitude} </td>
+         <td><strong> Audio Recordings: </strong> ${language.joshua_project.audio_recordings}</td><`;
+
+    });
+
+
+
+    
+    $('#output').html(output);
+    $('#output').plugin();
+});
+});
+ });
+</script>
+
+</body>
+</html>
