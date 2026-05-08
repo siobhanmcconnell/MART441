@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Candy Catch</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+
+var player;
+var cursors;
+var candy;
+var score = 0;
+var scoreText;
+
+let difficulty = 1;
+let spawnDelay = 1000;
+let gameTime = 0;
+
+var lives = 3;
+var livesText;
+var gameOver = false;
+var gameOverText;
+
+
+var candyTypes = [
+    { key:'donut', points: 10, speed: 150, lifeRemoval: 0, sound: 'pop'},
+    { key:'burger', points: 20, speed: 250, lifeRemoval: 0, sound: 'pop'},
+    { key:'pizza', points: 50, speed: 500, lifeRemoval: 0, sound: 'pop'},
+    { key:'bomb', points: -50, speed: 300, lifeRemoval: -1, sound: 'bonk'}
+];
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    this.load.image('background','assets/background.png');
+    this.load.spritesheet('basket', 'assets/basket.png',
+        { frameWidth: 18, frameHeight: 18 });
+    this.load.image('donut','assets/donut1.png');
+    this.load.image('burger', 'assets/burger.png');
+    this.load.image('pizza', 'assets/pizza.png');
+    this.load.image('bomb', 'assets/bomb.png');
+
+    this.load.audio('pop', 'assets/pop.mp3');
+    this.load.audio('bonk', 'assets/bonk.mp3');
+   
+}
+
+function create ()
+{
+    
+
+    this.add.image(400,300, 'background'); 
+
+ player = this.physics.add.sprite(400, 555, 'basket'); 
+ player.setScale(4);
+player.setCollideWorldBounds(true);
+
+    cursors = this.input.keyboard.createCursorKeys();
+
+    candy = this.physics.add.group();
+    
+
+ this.spawnEvent = this.time.addEvent({
+    delay: spawnDelay,
+    callback: spawnCandy,
+    callbackScope: this,
+    loop: true
+});
+
+this.sounds = {
+    pop: this.sound.add('pop'),
+    bonk: this.sound.add('bonk')
+};
+
+
+this.input.on('pointerdown', () => {
+    if (this.sound.context.state === 'suspended') {
+        this.sound.context.resume();
+    }
+});
+
+
+
+
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+    livesText = this.add.text(16, 50, 'Lives: 3', { fontSize: '32px', fill: '#000' });
+    gameOverText = this.add.text(300, 220, '', { fontSize: '50px', fill: '#000'});
+
+
+    this.physics.add.overlap(player, candy, collectCandy, null, this);
+
+}
+
+
+function update(time, delta) { 
+    if (gameOver) {
+        gameEnd();
+    }
+
+
+    gameTime += delta / 1000;
+    if (gameTime > difficulty * 5) {
+        difficulty++;
+
+        spawnDelay = Math.max(300, spawnDelay - 100);
+
+        this.spawnEvent.remove(false);
+        this.spawnEvent = this.time.addEvent({
+            delay: spawnDelay,
+            callback: spawnCandy,
+            callbackScope: this,
+            loop: true
+        });
+    }
+    if (cursors.left.isDown)
+    {
+        player.setVelocityX(-560);
+
+       
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(560);
+
+       
+    }
+    else
+    {
+        player.setVelocityX(0);
+
+
+}
+
+if (lives === 0) {
+    gameOver = true;
+}
+}
+
+
+
+function spawnCandy(){
+
+    if (gameOver === false){
+
+let x = Phaser.Math.Between(50, 750);
+
+    let type = Phaser.Utils.Array.GetRandom(candyTypes);
+
+    let randomCandy = candy.create(x, 0, type.key);
+
+    randomCandy.setVelocityY(type.speed);
+
+    randomCandy.points = type.points;
+    randomCandy.setScale(2);
+    if (type.key === 'bomb') {
+    randomCandy.setScale(4);
+}
+
+    randomCandy.sound = type.sound;
+    randomCandy.lifeRemoval = type.lifeRemoval;
+}
+}
+
+function collectCandy (player, candy)
+{
+
+     if (gameOver === false){
+    candy.disableBody(true, true);
+
+    score += candy.points;
+    scoreText.setText('Score: ' + score);
+
+    lives += candy.lifeRemoval;
+    livesText.setText('Lives: ' + lives);
+
+    this.sounds[candy.sound].play();
+}
+}
+
+
+function gameEnd(){
+    if (gameOver === true)
+{
+    gameOverText.setText('GAME OVER');
+    candy.clear(true, true);
+}
+}
+</script>
+
+</body>
+</html>
